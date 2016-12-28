@@ -48,7 +48,7 @@ class Noticias extends Controller
         $producto->Descripcion= $request->txtDescripcion;
         
       
-        if ($request->file('UrlImg')) //Valida si el campo file tiene un archivo o no lo tiene.
+        if ($request->file('UrlImg')) //Valida si el campo file tiene un archivo o no lo tiene. 
         {
             $img=$request->file('UrlImg');
             $file_route = time().'_'.$img->getClientOriginalName();
@@ -56,7 +56,6 @@ class Noticias extends Controller
             
             $producto->UrlImg= $file_route;
         }
-
         $producto->save();
         /*dd('Datos guardados con exito');*/
         $request->session()->flash('alert-success', 'Recordatorio guardado con exito.');

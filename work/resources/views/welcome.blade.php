@@ -28,30 +28,51 @@
     <nav class="navbar navbar-default navbar-static-top" style="position: fixed;min-width: 100%;box-shadow: 0px 7px 7px rgba(0,0,0,0.5);border-color:#222;background-color: #222">
         <div class="container">
             <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <img class="navbar-brand" class="img-responsive" style="background-color: #333333" src="img/k.png" alt="">
-           
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img class="navbar-brand" class="img-responsive" style="background-color: #333333" src="img/k.png" alt="">
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-        <li class=""><a href="index.php"><b style="color:#fafafa">Reminders</b></a></li>
-            </ul>
+                 <ul class="nav navbar-nav">
+                      <li class=""><a href=""><b style="color:#fafafa">Reminders</b></a></li>
+                 </ul>
             @if (Route::has('login'))
-            <ul class="nav navbar-nav navbar-right" >
-                <li><a href="{{ url('/login') }}">Iniciar Sesion</a></li>
-                <li><a href="{{ url('/register') }}">Registrate</a></li>
-                
-            </ul>
+                <ul class="nav navbar-nav navbar-right" >
+                @if (Auth::guest())
+                    <li><a href="{{ url('/login') }}">Iniciar Sesion</a></li>
+                    <li><a href="{{ url('/register') }}">Registrate</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    Cerrar sesion
+                                </a>
+
+
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                            <li><a href="{{ url('/login') }}">Panel de administracion</a></li> 
+                        </ul>
+                    </li>
+                @endif 
+                </ul>
             @endif
             </div><!--/.nav-collapse -->
         </div>
         </nav>
-        
     </header> 
         <!--
         <nav class="navbar navbar-default">

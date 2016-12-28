@@ -11,7 +11,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Descripcion</label>
-    <input type="text" class="form-control" name="txtDescripcion" placeholder="Descripcion">
+    <textarea type="text" class="form-control" name="txtDescripcion" placeholder="Descripcion"></textarea>
     @if($errors->has('txtDescripcion'))
         <span class="help-block" style="color:red">
             <strong>{{ $errors->first('txtDescripcion') }}</strong>
