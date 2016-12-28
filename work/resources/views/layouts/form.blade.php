@@ -1,4 +1,4 @@
-<form role="form" method="POST" action="{{ url('noticias')}}">
+<form role="form" method="POST" action="{{ url('noticias')}}" enctype="multipart/form-data">
     {{ csrf_field() }}
   <div class="form-group">
     <label for="exampleInputEmail1">Titulo</label>

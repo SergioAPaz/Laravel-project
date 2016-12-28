@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Noticia;//este es el modelo
+use Storage;
 
 class Noticias extends Controller
 {
@@ -46,8 +47,16 @@ class Noticias extends Controller
         $producto->Titulo= $request->txtTitulo;
         $producto->Descripcion= $request->txtDescripcion;
         
+      
+
+        $img=$request->file('UrlImg');
+        $file_route = time().'_'.$img->getClientOriginalName();
+        Storage::disk('imgProductos')->put($file_route, file_get_contents($img->getRealPath() ) );
+        
+        $producto->UrlImg= $file_route;
         $producto->save();
         dd('Datos guardados con exito');
+
     }
 
     /**
