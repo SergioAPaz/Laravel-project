@@ -55,7 +55,9 @@ class Noticias extends Controller
         
         $producto->UrlImg= $file_route;
         $producto->save();
-        dd('Datos guardados con exito');
+        /*dd('Datos guardados con exito');*/
+        $request->session()->flash('alert-success', 'Producto guardado con exito');
+        return back();
 
     }
 
