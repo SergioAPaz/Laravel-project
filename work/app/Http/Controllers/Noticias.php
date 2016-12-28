@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Noticia;
+use App\Noticia;//este es el modelo
 
 class Noticias extends Controller
 {
@@ -36,7 +36,18 @@ class Noticias extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->txtDescripcion);
+        //dd($request->txtDescripcion);
+        $this->validate($request, [
+            'txtTitulo' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:50',
+            'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:100'
+        ]); 
+
+        $producto = new Noticia();
+        $producto->Titulo= $request->txtTitulo;
+        $producto->Descripcion= $request->txtDescripcion;
+        
+        $producto->save();
+        dd('Datos guardados con exito');
     }
 
     /**
