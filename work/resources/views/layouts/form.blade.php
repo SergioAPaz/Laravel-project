@@ -1,7 +1,7 @@
-<form role="form" method="POST" action="{{ url('noticias')}}" enctype="multipart/form-data">
+<form role="form" method="POST" action="{{ url('noticias') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
   <div class="form-group">
-    <label for="exampleInputEmail1">Titulo</label>
+    <label for="exampleInputEmail1">Encabezado</label>
     <input type="text" class="form-control" name="txtTitulo" placeholder="Titulo">
     @if($errors->has('txtTitulo'))
         <span class="help-block" style="color:red">
@@ -19,9 +19,9 @@
     @endif
   </div>
   <div class="form-group">
-    <label for="exampleInputFile">File image</label>
+    <label for="exampleInputFile">Imagen</label>
     <input type="file" name="UrlImg">
-    <p class="help-block">Imagen de producto a cargar.</p>
+    <p class="help-block">Imagen a cargar.</p>
   </div>
     <!--Mensaje de confirmacion de salvado exitoso-->
   <div class="flash-message">
