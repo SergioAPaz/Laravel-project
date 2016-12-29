@@ -22,10 +22,10 @@
     </head>
 
 
-    <body style="background-color:#fafafa"> 
+    <body style="background-color:#E8E8E8;padding-top: 70px;"> 
     <header>
         
-    <nav class="navbar navbar-default navbar-static-top" style="position: fixed;min-width: 100%;box-shadow: 0px 7px 7px rgba(0,0,0,0.5);border-color:#222;background-color: #222">
+    <nav class="navbar navbar-default navbar-fixed-top" style="position: fixed;min-width: 100%;box-shadow: 0px 7px 7px rgba(0,0,0,0.5);border-color:#222;background-color: #222">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -74,19 +74,35 @@
         </div>
         </nav>
     </header> 
-        <!--
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                <a class="navbar-brand" href="#">News!</a>
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('/login') }}">Iniciar Sesion</a></li>
-                    <li><a href="{{ url('/register') }}">Registrate</a></li>
-                </ul>
-            </div>
-        </nav>
-        -->
+
+    <div class="container"  >
+        <div class="row" style="margin-top: 20px">
+            @if(isset($noticias))
+                    @foreach($noticias as $n)
+                        <div class="col-xs-12 col-sm-3">
+                            <div class="thumbnail" style="background-color: #222;border: 1px solid #222;border-radius: 5px;">
+                                @if(!empty($n->UrlImg))
+                                    <img src="imgProductos/{{ $n->UrlImg }}" alt="..." style="border-radius: 5px">
+                                @else
+                                @endif
+                                
+                                <div class="caption" style="color: #fafafa">
+                                    <h3>{{$n->Titulo}}</h3>
+                                    <p>{{ $n->Descripcion }}</p>
+                                    
+                                </div>
+                                 <div class="panel-footer">Update: {{ $n->updated_at}}</div>
+                            </div>
+                        </div>
+                    @endforeach
+            @endif
+        </div>
+
+
+
+    </div>
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>

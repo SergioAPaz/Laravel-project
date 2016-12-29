@@ -32,7 +32,12 @@
 
 <div class="container">
     @if(!isset($edit))
-        @include('layouts.tabla')
+        @if(session()->has('msj-success'))
+            <div class="alert alert-success" role="alert">{{ session('msj-success') }}</div>
+            @include('layouts.tabla')
+            @else
+            @include('layouts.tabla')
+        @endif
     @endif
 </div>
 

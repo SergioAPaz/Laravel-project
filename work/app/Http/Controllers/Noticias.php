@@ -18,6 +18,19 @@ class Noticias extends Controller
         //
     }
 
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function mostrar()
+    {
+        //
+        
+        $noticias = Noticia::all();
+        return view('welcome')->with(['noticias' => $noticias]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,9 +52,9 @@ class Noticias extends Controller
         //
         //dd($request->txtDescripcion);
         $this->validate($request, [
-            'txtTitulo' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:50',
+            'txtTitulo' => 'regex:/(^[A-Za-z0-9 ]+$)+/|max:50',
             'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:150',
-            'txtCarpeta' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:20'
+            'txtCarpeta' => 'regex:/(^[A-Za-z0-9 ]+$)+/|max:20'
         ]); 
 
         $producto = new Noticia();
@@ -102,9 +115,9 @@ class Noticias extends Controller
          //
         //dd($request->txtDescripcion);
         $this->validate($request, [
-            'txtTitulo' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:50',
+            'txtTitulo' => 'regex:/(^[A-Za-z0-9 ]+$)+/|max:50',
             'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:150',
-            'txtCarpeta' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:20'
+            'txtCarpeta' => 'regex:/(^[A-Za-z0-9 ]+$)+/|max:20'
         ]); 
 
         $producto = Noticia::find($id);
@@ -126,7 +139,7 @@ class Noticias extends Controller
             if($producto->save())
             {
                 
-                return redirect('home')->with('msj', 'Los datos se modificaron con exito.');;
+                return redirect('home')->with('msj', 'Los datos se modificaron con exito.');
             }else
             {
                 return back()->with('errormsj', 'Los datos no se guardaron');
@@ -143,6 +156,11 @@ class Noticias extends Controller
      */
     public function destroy($id)
     {
-        //
+            
+        $producto = Noticia::find($id);
+        Noticia::destroy($id);
+        Storage::disk('imgProductos')->delete($producto->UrlImg);
+        return redirect('home')->with('msj-success', 'El recordatorio se elimino con exito.');
+
     }
 }
