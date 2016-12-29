@@ -278,6 +278,7 @@ class ComposerStaticInit889961ca4061a5d312fa63a940ec3822
     );
 
     public static $classMap = array (
+        'AddColoumnCarpeta' => __DIR__ . '/../..' . '/database/migrations/2016_12_29_085722_add_coloumn_Carpeta.php',
         'CreateNoticiasTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_27_064750_create_noticias_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

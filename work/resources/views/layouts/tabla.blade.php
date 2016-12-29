@@ -7,6 +7,7 @@
             @if(isset($Noticias))
                 <thead style="">
                     <th>Creado</th>
+                    <th>Carpeta</th>
                     <th>Encabezado</th>
                     <th>Descripcion</th>
                     <th>Imagen</th>
@@ -16,6 +17,7 @@
                     @foreach($Noticias as $n)
                     <tr>
                         <td>{{ $n->created_at }}</td>
+                        <td>{{ $n->Carpeta }}</td>
                         <td>{{ $n->Titulo }}</td>
                         <td>{{ $n->Descripcion }}</td>
                         

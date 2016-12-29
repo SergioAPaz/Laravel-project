@@ -40,12 +40,14 @@ class Noticias extends Controller
         //dd($request->txtDescripcion);
         $this->validate($request, [
             'txtTitulo' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:50',
-            'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:150'
+            'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:150',
+            'txtCarpeta' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:20'
         ]); 
 
         $producto = new Noticia();
         $producto->Titulo= $request->txtTitulo;
         $producto->Descripcion= $request->txtDescripcion;
+        $producto->Carpeta= $request->txtCarpeta;
         
       
         if ($request->file('UrlImg')) //Valida si el campo file tiene un archivo o no lo tiene. 
@@ -101,13 +103,14 @@ class Noticias extends Controller
         //dd($request->txtDescripcion);
         $this->validate($request, [
             'txtTitulo' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:50',
-            'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:150'
+            'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:150',
+            'txtCarpeta' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:20'
         ]); 
 
         $producto = Noticia::find($id);
         $producto->Titulo= $request->txtTitulo;
         $producto->Descripcion= $request->txtDescripcion;
-        
+        $producto->Carpeta= $request->txtCarpeta;
       
         if ($request->file('UrlImg')) //Valida si el campo file tiene un archivo o no lo tiene. 
         {
@@ -122,7 +125,8 @@ class Noticias extends Controller
         }
             if($producto->save())
             {
-                return redirect('home');
+                
+                return redirect('home')->with('msj', 'Los datos se modificaron con exito.');;
             }else
             {
                 return back()->with('errormsj', 'Los datos no se guardaron');

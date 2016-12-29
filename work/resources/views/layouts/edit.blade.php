@@ -10,6 +10,17 @@
 <input type="hidden" name="_method" value="PUT">
 <input type="text" name="img" class="hide" value="{{ $noticia->UrlImg }}">
     {{ csrf_field() }}
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Carpeta</label>
+    <input type="text" class="form-control" name="txtCarpeta" value="{{ $noticia->Carpeta }}">
+    @if($errors->has('txtCarpeta'))
+        <span class="help-block" style="color:red">
+            <strong>{{ $errors->first('txtCarpeta') }}</strong>
+        </span>
+    @endif
+  </div>  
+
   <div class="form-group">
     <label for="exampleInputEmail1">Encabezado</label>
     <input type="text" class="form-control" name="txtTitulo" value="{{ $noticia->Titulo }}">
@@ -19,6 +30,7 @@
         </span>
     @endif
   </div>
+
   <div class="form-group">
     <label for="exampleInputPassword1">Descripcion</label>
     <textarea type="text" class="form-control" name="txtDescripcion">{{ $noticia->Descripcion}}</textarea>
@@ -28,6 +40,7 @@
         </span>
     @endif
   </div>
+
   <div class="form-group">
     <label for="exampleInputFile">Imagen</label>
     <input type="file" name="UrlImg">
