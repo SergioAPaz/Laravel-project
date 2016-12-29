@@ -6,12 +6,16 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" style="border-color:#2579A9">
                 <div class="panel-heading" style="background-color:#2579A9;color:#fafafa;border-color:#2579A9">Nuevo recordatorio</div>
-
                 <div class="panel-body">
-                    @include('layouts.form')
+                    @include('layouts.form')                  
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="container">
+    @include('layouts.tabla')
+</div>
+
 @endsection

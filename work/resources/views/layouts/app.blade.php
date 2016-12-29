@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -81,7 +82,20 @@
         @yield('content')
     </div>
 
-    <!-- Scripts -->
+
     <script src="/js/app.js"></script>
+
+    <!--DATATABLE JQUERY PLUGIN-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"> <!--Este lo pongo porque me arreja error en los glyphicons si no lo declaro-->
+    <link rel="stylesheet" href="/js/DatatableJquery/dataTables.bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/js/DatatableJquery/jquery.dataTables.min.js"></script>
+    <script src="/js/DatatableJquery/dataTables.bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('#regTable').DataTable();
+    });
+    </script>
+    
 </body>
 </html>
