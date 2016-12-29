@@ -6,15 +6,19 @@
             <table class="table   table-hover  tab" id="regTable"  style="background-color: #ffffff;text-align: center;vertical-align: middle;">
             @if(isset($Noticias))
                 <thead style="">
+                    <th>Creado</th>
                     <th>Encabezado</th>
                     <th>Descripcion</th>
                     <th>Imagen</th>
+                    <th>Acciones</th>
                 </thead>
                 <tbody>
                     @foreach($Noticias as $n)
                     <tr>
+                        <td>{{ $n->created_at }}</td>
                         <td>{{ $n->Titulo }}</td>
                         <td>{{ $n->Descripcion }}</td>
+                        
                        <!-- <td>{{(empty($n->UrlImg)?'Vacia':'')}}</td>-->
                         @if(!empty($n->UrlImg))
                          <td>
@@ -23,10 +27,12 @@
                         @else
                         <td>Vacia</td>
                         @endif
+                        <td>
+                            <a href="noticias/{{ $n->id }}/edit" class="btn btn-warning btn-xs">Modificar</a>
+                            <a href="" class="btn btn-danger btn-xs">Eliminar</a>
+                        </td>
                         
-                       <!-- <td>
-                            <img src="imgProductos/{{ $n -> UrlImg }}" alt="Responsive image" class="img-responsive" style="max-width:70px;height:auto">
-                        </td>-->
+                
                     </tr>
                     @endforeach
                 </tbody>

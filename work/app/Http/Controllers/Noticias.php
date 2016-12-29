@@ -40,7 +40,7 @@ class Noticias extends Controller
         //dd($request->txtDescripcion);
         $this->validate($request, [
             'txtTitulo' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:50',
-            'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:100'
+            'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:150'
         ]); 
 
         $producto = new Noticia();
@@ -83,6 +83,8 @@ class Noticias extends Controller
     public function edit($id)
     {
         //
+        $noticia = Noticia::find($id);
+        return view('home')->with(['edit' => true, 'noticia' => $noticia]);
     }
 
     /**
@@ -95,6 +97,38 @@ class Noticias extends Controller
     public function update(Request $request, $id)
     {
         //
+         //
+        //dd($request->txtDescripcion);
+        $this->validate($request, [
+            'txtTitulo' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:50',
+            'txtDescripcion' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:150'
+        ]); 
+
+        $producto = Noticia::find($id);
+        $producto->Titulo= $request->txtTitulo;
+        $producto->Descripcion= $request->txtDescripcion;
+        
+      
+        if ($request->file('UrlImg')) //Valida si el campo file tiene un archivo o no lo tiene. 
+        {
+            $img=$request->file('UrlImg');
+            
+            $file_route = time().'_'.$img->getClientOriginalName();
+            
+            Storage::disk('imgProductos')->put($file_route, file_get_contents($img->getRealPath() ) );
+            Storage::disk('imgProductos')->delete($request->img);
+            
+            $producto->UrlImg = $file_route;
+        }
+            if($producto->save())
+            {
+                return redirect('home');
+            }else
+            {
+                return back()->with('errormsj', 'Los datos no se guardaron');
+            }
+        
+
     }
 
     /**
