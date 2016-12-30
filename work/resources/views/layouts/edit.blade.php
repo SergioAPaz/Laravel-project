@@ -9,6 +9,8 @@
 <form role="form" method="POST" action="{{ route('noticias.update', $noticia->id) }}" enctype="multipart/form-data">
 <input type="hidden" name="_method" value="PUT">
 <input type="text" name="img" class="hide" value="{{ $noticia->UrlImg }}">
+
+
     {{ csrf_field() }}
 
   <div class="form-group">

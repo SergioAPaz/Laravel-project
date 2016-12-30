@@ -13,6 +13,6 @@ class Noticia extends Model
      * @var array
      */
     protected $fillable = [
-        'Titulo', 'Descripcion', 'Carpeta', 'UrlImg',
+        'Titulo', 'Descripcion', 'Carpeta', 'UrlImg', 'Propietary',
     ];
 }

@@ -79,21 +79,26 @@
         <div class="row" style="margin-top: 20px">
             @if(isset($noticias))
                     @foreach($noticias as $n)
-                        <div class="col-xs-12 col-sm-3">
-                            <div class="thumbnail" style="background-color: #222;border: 1px solid #222;border-radius: 5px;">
-                                @if(!empty($n->UrlImg))
-                                    <img src="imgProductos/{{ $n->UrlImg }}" alt="..." style="border-radius: 5px">
-                                @else
-                                @endif
-                                
-                                <div class="caption" style="color: #fafafa">
-                                    <h3>{{$n->Titulo}}</h3>
-                                    <p>{{ $n->Descripcion }}</p>
+                    @if(isset(Auth::user()->name)) <!--Valida si existe una session-->
+                       @if(Auth::user()->email == $n->Propietary ) <!--//ARROJA SOLO LOS RECORDATORIOS DEL USUARIO LOGUEADO-->
+                            <div class="col-xs-12 col-sm-3">
+                                <div class="thumbnail" style="background-color: #222;border: 1px solid #222;border-radius: 5px;">
+                                    @if(!empty($n->UrlImg))
+                                        <img src="imgProductos/{{ $n->UrlImg }}" alt="..." style="border-radius: 5px">
+                                    @else
+                                    @endif
                                     
+                                    <div class="caption" style="color: #fafafa">
+                                        
+                                        <h3>{{$n->Titulo}}</h3>
+                                        <p>{{ $n->Descripcion }}</p>
+                                        
+                                    </div>
+                                    <div class="panel-footer">Update: {{ $n->updated_at}}</div>
                                 </div>
-                                 <div class="panel-footer">Update: {{ $n->updated_at}}</div>
                             </div>
-                        </div>
+                        @endif
+                    @endif
                     @endforeach
             @endif
         </div>

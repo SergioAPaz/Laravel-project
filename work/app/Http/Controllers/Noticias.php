@@ -61,7 +61,7 @@ class Noticias extends Controller
         $producto->Titulo= $request->txtTitulo;
         $producto->Descripcion= $request->txtDescripcion;
         $producto->Carpeta= $request->txtCarpeta;
-        
+        $producto->Propietary= $request->txtGetEmailUser;
       
         if ($request->file('UrlImg')) //Valida si el campo file tiene un archivo o no lo tiene. 
         {
@@ -124,6 +124,7 @@ class Noticias extends Controller
         $producto->Titulo= $request->txtTitulo;
         $producto->Descripcion= $request->txtDescripcion;
         $producto->Carpeta= $request->txtCarpeta;
+        
       
         if ($request->file('UrlImg')) //Valida si el campo file tiene un archivo o no lo tiene. 
         {

@@ -1,6 +1,6 @@
 <form role="form" method="POST" action="{{ url('noticias') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
-
+<input type="text" name="txtGetEmailUser" class="hide" value="{{{ isset(Auth::user()->name) ? Auth::user()->email : Auth::user()->email }}}">
   <div class="form-group">
 
   <!--Mensaje de confirmacion de salvado exitoso-->
