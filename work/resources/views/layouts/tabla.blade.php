@@ -17,7 +17,7 @@
             @if(isset($Noticias))
                 <thead style="">
                     <th>Actualizado</th>
-                    <th>Carpeta</th>
+                    <th>Categoria</th>
                     <th>Encabezado</th>
                     <th>Descripcion</th>
                     <th>Imagen</th>
@@ -27,7 +27,7 @@
                     @foreach($Noticias as $n)
                         @if(Auth::user()->email == $n->Propietary ) <!--//ARROJA SOLO LOS RECORDATORIOS DEL USUARIO LOGUEADO-->
                             <tr>
-                                <td>{{ $n->updated_at }}</td>
+                                <td>{{ str_limit($n->updated_at, 10) }}</td>
                                 <td>{{ $n->Carpeta }}</td>
                                 <td>{{ $n->Titulo }}</td>
                                 <td>{{ $n->Descripcion }}</td>

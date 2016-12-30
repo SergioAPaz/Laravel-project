@@ -14,6 +14,8 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
+
+  
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -85,10 +87,15 @@
 
     <script src="/js/app.js"></script>
 
+
+    
+
+
+
     <!--DATATABLE JQUERY PLUGIN-->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"> <!--Este lo pongo porque me arreja error en los glyphicons si no lo declaro-->
     <link rel="stylesheet" href="/js/DatatableJquery/dataTables.bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ 
     <script src="/js/DatatableJquery/jquery.dataTables.min.js"></script>
     <script src="/js/DatatableJquery/dataTables.bootstrap.min.js"></script>
     <script>

@@ -1,7 +1,7 @@
 <form role="form" method="POST" action="{{ url('noticias') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
 <input type="text" name="txtGetEmailUser" class="hide" value="{{{ isset(Auth::user()->name) ? Auth::user()->email : Auth::user()->email }}}">
-  <div class="form-group">
+
 
   <!--Mensaje de confirmacion de salvado exitoso-->
     <div class="flash-message">
@@ -12,18 +12,33 @@
       @endforeach
     </div> <!-- end .flash-message -->
 
-    <label for="exampleInputEmail1">Carpeta</label>
-    <input type="text" class="form-control" name="txtCarpeta" placeholder="Carpeta">
-    <p class="help-block">Si desea guardar en una carpeta ya existente solo coloque el nombre o bien cree una nueva carpeta.</p>
+      <div class="form-group">
+  <label for="exampleInputEmail1">Categoria</label>
+    <input type="text" class="form-control" name="txtCarpeta" placeholder="Categoria">
+    
     @if($errors->has('txtCarpeta'))
         <span class="help-block" style="color:red">
             <strong>{{ $errors->first('txtCarpeta') }}</strong>
         </span>
     @endif
-  </div>
+    </div>
+<!--<label for="exampleInputEmail1">Carpeta</label><br>
+    <select class="selectpicker">
+  <optgroup label="Carpetas existentes">
+    <option>Mustard</option>
+    <option>Ketchup</option>
+    <option>Relish</option>
+  </optgroup>
+  <optgroup >
+    
+    <option>Ninguna</option>
+  </optgroup>
+</select>
+<button type="button" class="btn btn-default "></button>-->
+
 
   <div class="form-group">
-    <label for="exampleInputEmail1">Encabezado</label>
+    <label for="exampleInputEmail1">Titulo</label>
     <input type="text" class="form-control" name="txtTitulo" placeholder="Titulo">
     @if($errors->has('txtTitulo'))
         <span class="help-block" style="color:red">

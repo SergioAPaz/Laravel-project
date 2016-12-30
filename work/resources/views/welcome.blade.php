@@ -78,9 +78,7 @@
     <div class="container"  >
         <div class="row" style="margin-top: 20px">
             @if(isset($noticias))
-            
                 @foreach($noticias as $n)
-                
                     @if(isset(Auth::user()->name)) <!--Valida si existe una session-->
                         @if(Auth::user()->email == $n->Propietary ) <!--//ARROJA SOLO LOS RECORDATORIOS DEL USUARIO LOGUEADO-->
                             <div class="col-xs-12 col-sm-3">
@@ -93,13 +91,12 @@
                                         <h3>{{$n->Titulo}}</h3>
                                         <p>{{ $n->Descripcion }}</p>
                                     </div>
-                                    <div class="panel-footer">Update: {{ $n->updated_at}}</div>
+                                    <div class="panel-footer">  {{ str_limit($n->updated_at, 10) }} <b class="pull-right">{{$n->Carpeta}}</b></div>
                                 </div>
                             </div>
                         @endif
-                    
                     @else
-                        <style>
+                         <style>
                             .ae {
                                 color: #636b6f;
                                 font-family: 'Raleway', sans-serif;
@@ -130,7 +127,7 @@
                                 margin-bottom: 30px;
                             }
                         </style>
-                        <div class="flex-center position-ref full-height ae">
+                        <div class="flex-center position-ref full-height ae" id="hide_me">
                             <div class="content">
                                 <div class="title m-b-md ">
                                     Reminders
@@ -138,11 +135,8 @@
                             </div>
                         </div>
                     @endif
-                    
                 @endforeach
-           
             @endif
-            
         </div>
     </div>
 
