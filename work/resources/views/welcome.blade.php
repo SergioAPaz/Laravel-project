@@ -78,39 +78,77 @@
     <div class="container"  >
         <div class="row" style="margin-top: 20px">
             @if(isset($noticias))
-                    @foreach($noticias as $n)
+            
+                @foreach($noticias as $n)
+                
                     @if(isset(Auth::user()->name)) <!--Valida si existe una session-->
-                       @if(Auth::user()->email == $n->Propietary ) <!--//ARROJA SOLO LOS RECORDATORIOS DEL USUARIO LOGUEADO-->
+                        @if(Auth::user()->email == $n->Propietary ) <!--//ARROJA SOLO LOS RECORDATORIOS DEL USUARIO LOGUEADO-->
                             <div class="col-xs-12 col-sm-3">
                                 <div class="thumbnail" style="background-color: #222;border: 1px solid #222;border-radius: 5px;">
                                     @if(!empty($n->UrlImg))
                                         <img src="imgProductos/{{ $n->UrlImg }}" alt="..." style="border-radius: 5px">
                                     @else
                                     @endif
-                                    
                                     <div class="caption" style="color: #fafafa">
-                                        
                                         <h3>{{$n->Titulo}}</h3>
                                         <p>{{ $n->Descripcion }}</p>
-                                        
                                     </div>
                                     <div class="panel-footer">Update: {{ $n->updated_at}}</div>
                                 </div>
                             </div>
                         @endif
+                    
+                    @else
+                        <style>
+                            .ae {
+                                color: #636b6f;
+                                font-family: 'Raleway', sans-serif;
+                                font-weight: 100;
+                                height: 100vh;
+                                margin: 0;
+                            }
+                            .full-height {
+                                height: 100vh;
+                            }
+                            .flex-center {
+                                align-items: center;
+                                display: flex;
+                                justify-content: center;
+                            }
+                            .position-ref {
+                                position: relative;
+                            }
+                        
+                            .content {
+                                text-align: center;
+                            }
+                            .title {
+                                font-size: 84px;
+                            }
+                        
+                            .m-b-md {
+                                margin-bottom: 30px;
+                            }
+                        </style>
+                        <div class="flex-center position-ref full-height ae">
+                            <div class="content">
+                                <div class="title m-b-md ">
+                                    Reminders
+                                </div>
+                            </div>
+                        </div>
                     @endif
-                    @endforeach
+                    
+                @endforeach
+           
             @endif
+            
         </div>
-
-
-
     </div>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
     </body>
-
-
 </html>
