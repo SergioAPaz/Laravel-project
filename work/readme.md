@@ -1,3 +1,8 @@
+# Reminders (Notas)
+
+Sistema web para la creacion y consulta de notas.
+
+---------------------------------------------------------------------
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
